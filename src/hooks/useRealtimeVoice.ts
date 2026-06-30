@@ -1,9 +1,22 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 
-const useRealtimeVoice = () => {
-  return (
-    <div>useRealtimeVoice</div>
-  )
-}
+export const useRealtimeVoice = () => {
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [isRecording, setIsRecording] = useState<boolean>(false);
 
-export default useRealtimeVoice
+  useEffect(() => {
+    // Audio context or web socket setup logic goes here dynamically.
+    return () => {
+      // Cleanup audio stream connections
+    };
+  }, []);
+
+  return {
+    isConnected,
+    isRecording,
+    setIsRecording
+  };
+};
+
+// Placed safely at the bottom after the hook is declared!
+export default useRealtimeVoice;

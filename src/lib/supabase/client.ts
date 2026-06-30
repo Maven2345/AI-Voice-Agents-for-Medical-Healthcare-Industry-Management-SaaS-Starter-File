@@ -1,9 +1,7 @@
-import React from 'react'
+import { createClient } from '@supabase/supabase-js';
 
-const client = () => {
-  return (
-    <div>client</div>
-  )
-}
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-export default client
+// Initializes the standard Supabase client safe for client-side/browser use
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

@@ -1,9 +1,22 @@
-import React from 'react'
+import { create } from 'zustand';
 
-const business = () => {
-  return (
-    <div>business</div>
-  )
+export interface BusinessState {
+  businessId: string | null;
+  businessName: string | null;
+  isConfigured: boolean;
+  setBusinessDetails: (id: string, name: string) => void;
+  clearBusiness: () => void;
 }
 
-export default business
+// Global client state store for managing active business session details
+export const useBusinessStore = create<BusinessState>((set) => ({
+  businessId: null,
+  businessName: null,
+  isConfigured: false,
+  setBusinessDetails: (id, name) => 
+    set({ businessId: id, businessName: name, isConfigured: true }),
+  clearBusiness: () => 
+    set({ businessId: null, businessName: null, isConfigured: false }),
+}));
+
+export default useBusinessStore;

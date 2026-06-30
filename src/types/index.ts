@@ -1,9 +1,13 @@
-import React from 'react'
+export * from './database';
 
-const index = () => {
-  return (
-    <div>index</div>
-  )
+export interface UserProfile {
+  id: string;
+  email: string;
+  role: 'admin' | 'staff' | 'patient';
 }
 
-export default index
+export interface VoiceAgentSession {
+  sessionId: string;
+  status: 'idle' | 'active' | 'completed';
+  startedAt: string;
+}

@@ -1,9 +1,4 @@
-import React from 'react'
+import { Resend } from 'resend';
 
-const resend = () => {
-  return (
-    <div>resend</div>
-  )
-}
-
-export default resend
+// Initializes the Resend Email client using your environment variables
+export const resend = new Resend(process.env.RESEND_API_KEY || 're_mock_key');

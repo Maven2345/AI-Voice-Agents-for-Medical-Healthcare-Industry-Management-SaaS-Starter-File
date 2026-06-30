@@ -1,9 +1,12 @@
-import React from 'react'
+import { createClient } from '@supabase/supabase-js';
 
-const admin = () => {
-  return (
-    <div>admin</div>
-  )
-}
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-export default admin
+// Initializes the privileged Supabase Admin client for backend-only secure operations
+export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
+  auth: {
+    persistSession: false,
+    autoRefreshToken: false,
+  },
+});
